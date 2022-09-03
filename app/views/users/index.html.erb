@@ -1,0 +1,9 @@
+<h1 class="text-3xl font-bold underline">
+  Hello and Welcome
+</h1>
+  <% if current_user %>
+    <%= link_to 'Logout', '/logout', :data => { :confirm => 'Are you sure?' }%>
+  <% else %>
+    <%= link_to 'Signup', '/signup'%>
+    <%= link_to 'Login', '/login'%>
+<% end %>
