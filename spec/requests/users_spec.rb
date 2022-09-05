@@ -20,7 +20,7 @@ RSpec.describe "Test Users", type: :request do
 			expect(response).to redirect_to(root_path)
 			expect(flash[:success]).to eq("Signup Successful")
 			post login_path, params: { user: {email: @user2[:user][:email], password: @user2[:user][:password]}}
-			expect(response).to redirect_to(root_path)
+			expect(response).to redirect_to(profile_path)
 			expect(flash[:success]).to eq("You have successfully Logged In")
 		end
 
@@ -32,7 +32,7 @@ RSpec.describe "Test Users", type: :request do
 
 		it "Login Works with right credentials" do
 			post login_path, params: { user: {email: 'jane@doe.com', password: 'pw1234'}}
-			expect(response).to redirect_to(root_path)
+			expect(response).to redirect_to(profile_path)
 			expect(flash[:success]).to eq("You have successfully Logged In")
 			expect(session[:user_id]).to_not eq(nil)
 		end

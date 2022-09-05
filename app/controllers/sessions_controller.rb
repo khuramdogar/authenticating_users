@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:user][:email])
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
-      redirect_to root_path, success: "You have successfully Logged In"
+      redirect_to profile_path, success: "You have successfully Logged In"
     else
       redirect_to login_path, error: "Invalid Email or Password"
     end

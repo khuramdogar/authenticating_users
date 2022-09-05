@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
+  before_action :authorize, only: [:profile]
 
   def index
+  end
+  
+  def profile
+    @user = current_user
   end
 
   def new
