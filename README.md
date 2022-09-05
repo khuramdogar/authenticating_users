@@ -1,7 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is Custum Rails Authentication without Devise Gem covered with test cases.
 
 Things you may want to cover:
 
@@ -30,6 +29,7 @@ Things you may want to cover:
   DATABASE_HOST=localhost
 
 * How to run the test suite
+    >In test cases I have tried to cover most of the cases in model specs and request specs. These tests could be approved if we use Rspec Factory bot and shoulda matchers
 
   ```bundle exec rspec```
   
