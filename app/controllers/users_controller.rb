@@ -1,4 +1,11 @@
 class UsersController < ApplicationController
+
+  def index
+  end
+
+  def new
+  end
+
   def create
     user = User.new(user_params)
     if user.save
@@ -6,12 +13,6 @@ class UsersController < ApplicationController
     else
       redirect_to signup_path, error: user.errors.messages
     end
-  end
-
-  def new
-  end
-
-  def index
   end
   
   private
