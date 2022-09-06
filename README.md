@@ -29,7 +29,6 @@ Things you may want to cover:
   DATABASE_HOST=localhost
 
 * How to run the test suite
-    >In test cases I have tried to cover most of the cases in model specs and request specs. These tests could be approved if we use Rspec Factory bot and shoulda matchers
 
   ```bundle exec rspec```
   
