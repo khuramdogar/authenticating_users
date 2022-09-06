@@ -1,20 +1,25 @@
 require 'rails_helper'
+require 'factories/users'
 
 RSpec.describe "Users", type: :request do
+	
 	before(:each) do
-		@user1 = {email: "jane@doe.com", password: "pw1234", password_confirmation: 'pw1234', first_name: "Anything", last_name: "Lorem ipsum"}
-		@user2 = { user: {email: "john@doe.com", password: "password", password_confirmation: 'password', first_name: "John", last_name: "Doe"}}
-		User.create(@user1)
+		factory_user = build(:user)
+		@user = {
+			email: factory_user.email,
+			password: factory_user.password,
+			password_confirmation: factory_user.password_confirmation,
+			first_name: factory_user.first_name,
+			last_name: factory_user.last_name
+		}
 	end
 	
+	
 	context 'POST Create' do
-		it "SignUp Works" do
-			post users_path, params: @user2
+		it "should create User" do
+			post users_path, params: {user: @user}
 			expect(response).to redirect_to(root_path)
 			expect(flash[:success]).to eq("Signup Successful")
-			post login_path, params: { user: {email: @user2[:user][:email], password: @user2[:user][:password]}}
-			expect(response).to redirect_to(profile_path)
-			expect(flash[:success]).to eq("You have successfully Logged In")
 		end
 	end
 	
@@ -22,10 +27,9 @@ RSpec.describe "Users", type: :request do
 		it "is expected to have status 200" do
 			get signup_path
 			expect(response.status).to eq(200)
-			expect(response.body).to include("Already have an account?")
 		end
 	end
-	
+
 	context 'GET Index' do
 		it "is expected to have status 200" do
 			get root_path
